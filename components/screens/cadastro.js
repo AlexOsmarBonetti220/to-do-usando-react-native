@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import {View, Text, TouchableOpacity, TextInput} from 'react-native';
+import {View, Text, TouchableOpacity, TextInput, StyleSheet} from 'react-native';
 
 import firebase from "../firebaseConnection";
 
@@ -31,29 +31,73 @@ const Cadastro = ({navigation}) => {
         
     }
     return(
-        <View>  
+        <View style={e.body}>  
             <View>
-                <Text>Cadastro de usuário</Text>
+                <Text style={e.titulo}>Cadastro de usuário</Text>
             </View>
             <View>
-                <Text>Digite seu nome</Text>
-                <TextInput placeholder="Nome" onChangeText={(t)=>setName(t)} />
-                <Text>Digite seu username</Text>
-                <TextInput placeholder="Username" onChangeText={(t)=>setUsername(t)} />
-                <Text>Digite seu email</Text> 
-                <TextInput placeholder="Email" onChangeText={(t)=>setEmail(t)} />
-                <Text>Digite sua senha</Text>
-                <TextInput placeholder="Senha" onChangeText={(t)=>setPassword(t)} secureTextEntry={true} />
+                <Text style={e.dica}>Digite seu nome</Text>
+                <TextInput style={[e.input, {borderColor:"#FF00FF"}]} placeholder="Nome" onChangeText={(t)=>setName(t)} />
+                <Text style={e.dica}>Digite seu username</Text>
+                <TextInput style={[e.input, {borderColor:"#5FB404"}]} placeholder="Username" onChangeText={(t)=>setUsername(t)} />
+                <Text style={e.dica}>Digite seu email</Text> 
+                <TextInput style={[e.input, {borderColor:"#0000FF"}]} placeholder="Email" onChangeText={(t)=>setEmail(t)} />
+                <Text style={e.dica}>Digite sua senha</Text>
+                <TextInput style={[e.input, {borderColor:"#FF0000"}]} placeholder="Senha" onChangeText={(t)=>setPassword(t)} secureTextEntry={true} />
             </View>
             <View>
                 <TouchableOpacity onPress={cadastrar}>
-                    <View>
-                        <Text>Cadastrar</Text>
+                    <View style={e.button}>
+                        <Text style={e.textButton}>Cadastrar</Text>
                     </View>
                 </TouchableOpacity>
             </View>
         </View> 
     )
 }
+
+const e = StyleSheet.create({
+    body:{
+        flex:1,
+        alignItems:"center",
+        justifyContent:"center",
+        padding:10
+    },
+    titulo:{
+        fontSize:25,
+        fontWeight:"bold",
+        textAlign:"center",
+    },
+    dica:{
+        fontSize:18,
+        fontWeight:'bold',
+        textAlign:"center",
+        paddingBottom:15,
+        paddingTop:15
+    },
+    input:{
+        width:200,
+        height:40,
+        padding:5,
+        textAlign:"center",
+        borderWidth:1,
+    },
+    button:{
+        width:100,
+        height:40,
+        backgroundColor:"#0000FF",
+        marginTop:20,
+        textAlign:"center",
+        justifyContent:"center",
+        borderWidth:1,
+        borderColor:"#000000"
+    },
+    textButton:{
+        fontSize:15,
+        fontWeight:"bold",
+        textAlign:"center",
+        color:"#FFFFFF"
+    }
+})
 
 export default Cadastro;

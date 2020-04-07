@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-import {View, Text, TouchableOpacity} from "react-native";
+import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
 
 import firebase from "../firebaseConnection";
 
@@ -46,27 +46,86 @@ const moreInfo = ({route, navigation}) => {
         })
     }, [])
     return(
-        <View>
-            <View>
+        <View style={e.body}>
+            <Text style={e.titulo}>Gerência de tarefas</Text>
+            <View style={e.taskPlace}>
+                <Text style={[e.subtitulo, {color:"#ff0000"}]}>Nome: {todoName}</Text>
                 <View>
-                    <Text>{todoName}</Text>
-                    <Text>{todoDescription}</Text>
+                    <Text style={[e.todoDescription, {color:"#ff0000"}]}>Descrição: {todoDescription}</Text>
                 </View>
             </View>
-            <View>
+            <View style={{flexDirection:"row"}}>
                 <TouchableOpacity onPress={modificarTarefa}>
-                    <View>
-                        <Text>{concluir ? "Concluir tarefa":"Desconcluir tarefa"}</Text>
+                    <View style={[e.buttons, {backgroundColor:"#21610B"}]}>
+                        <Text style={e.textButton}>{concluir ? "Concluir tarefa":"Desconcluir tarefa"}</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={removerTarefa}>
-                    <View>
-                        <Text>Remover tarefa</Text>
+                    <View style={[e.buttons, {backgroundColor:"#FF0000"}]}>
+                        <Text style={e.textButton}>Remover tarefa</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+            <View>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate("TelaInicial");
+                }}>
+                    <View style={[e.buttons, {marginTop:20, backgroundColor:"#ff00ff"}]}>
+                        <Text style={e.textButton}>Voltar</Text>
                     </View>
                 </TouchableOpacity>
             </View>
         </View>
     )
 }
+
+const e = StyleSheet.create({
+    body:{
+        flex:1,
+        alignItems:"center",
+        justifyContent:'center',
+        padding:10
+    },
+    titulo:{
+        fontSize:25,
+        fontWeight:"bold",
+        textAlign:"center",
+        paddingBottom:20
+    },
+    subtitulo:{
+        fontSize:20,
+        fontWeight:"bold",
+        paddingBottom:20,
+        textAlign:"center"
+    },
+    todoDescription:{
+        fontSize:15,
+        fontWeight:"bold",
+        textAlign:"center",
+        paddingBottom:10
+    },
+    taskPlace:{
+        backgroundColor:'#c6c6c6',
+        padding:10,
+        textAlign:'center',
+        borderWidth:2,
+        borderColor:"#000000",
+        marginBottom:20
+    },
+    buttons:{
+        width:150,
+        height:40,
+        borderWidth:2,
+        borderColor:"#000000",
+        alignItems:"center",
+        justifyContent:"center",
+        marginRight:10
+    },
+    textButton:{
+        fontSize:15,
+        fontWeight:"bold",
+        color:'#ffffff'
+    }
+})
 
 export default moreInfo;

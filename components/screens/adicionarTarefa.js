@@ -40,10 +40,17 @@ const AddTarefa = ({navigation}) => {
                 <Text style={e.label}>Digite a descrição da tarefa</Text>
                 <TextInput style={[e.input, {borderColor:"red"}]} placeholder="Descrição" onChangeText={(t)=>setDescription(t)} />
             </View>
-            <View>
+            <View style={{flexDirection:'row'}}>
                 <TouchableOpacity onPress={adicionarTarefa}>
                     <View style={e.AddTarefa}>
                         <Text style={e.textButton}>Adicionar tarefa</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate("TelaInicial");
+                }}>
+                    <View style={[e.AddTarefa, {backgroundColor:'#ffff00'}]}>
+                        <Text style={e.textButton}>Voltar</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -84,7 +91,8 @@ const e = StyleSheet.create({
         justifyContent:'center',
         marginTop:20,
         borderWidth:1,
-        borderColor:"#000000"
+        borderColor:"#000000",
+        marginRight:10
     },
     textButton:{
         fontSize:15,

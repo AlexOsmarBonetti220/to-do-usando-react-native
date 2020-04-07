@@ -10,7 +10,7 @@ const Home = ({navigation}) => {
             </View>
             <View style={{flexDirection:"row"}}>
                 <TouchableOpacity onPress={()=>navigation.navigate("Login")}>
-                    <View style={[e.button, {backgroundColor:"#00FF00"}]}>
+                    <View style={[e.button, {backgroundColor:"#21610B"}]}>
                         <Text style={[e.textoButton, {color:"#FFFFFF"}]}>Login</Text>
                     </View>
                 </TouchableOpacity>

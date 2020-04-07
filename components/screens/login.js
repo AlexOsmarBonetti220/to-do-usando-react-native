@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {View, TouchableOpacity, Text, TextInput} from "react-native";
+import {View, TouchableOpacity, Text, TextInput, StyleSheet} from "react-native";
 
 import firebase from "../firebaseConnection";
 
@@ -11,7 +11,7 @@ const Login = ({navigation}) => {
         //Colocando o listener
         firebase.auth().onAuthStateChanged((user)=>{
             if(user){
-                navigation.navigate("Await");
+                navigation.navigate("TelaInicial");
             }
         })
         //Logando o usuario
@@ -20,25 +20,69 @@ const Login = ({navigation}) => {
         })
     }
     return(
-        <View>
+        <View style={e.body}>
             <View>
-                <Text>Login</Text>
+                <Text style={e.titulo}>Login</Text>
             </View>
             <View>
-                <Text>Digite seu email</Text>
-                <TextInput placeholder="Email" onChangeText={(t)=>setEmail(t)} />
-                <Text>Digite sua senha</Text>
-                <TextInput placeholder="Senha" onChangeText={(t)=>setSenha(t)} />
+                <Text style={e.dica}>Digite seu email</Text>
+                <TextInput style={[e.input, {borderColor:"#FF00FF"}]} placeholder="Email" onChangeText={(t)=>setEmail(t)} />
+                <Text style={e.dica}>Digite sua senha</Text>
+                <TextInput secureTextEntry={true} style={[e.input, {borderColor:"#FF0000"}]} placeholder="Senha" onChangeText={(t)=>setSenha(t)} />
             </View>
             <View>
                 <TouchableOpacity onPress={logar}>
-                    <View>
-                        <Text>Login</Text>
+                    <View style={e.button}>
+                        <Text style={e.textButton}>Login</Text>
                     </View>
                 </TouchableOpacity>
             </View>
         </View>
     )
 }
+
+const e = StyleSheet.create({
+    body:{
+        flex:1,
+        alignItems:"center",
+        justifyContent:"center",
+        padding:10
+    },
+    titulo:{
+        fontSize:25,
+        fontWeight:"bold",
+        textAlign:"center",
+    },
+    dica:{
+        fontSize:18,
+        fontWeight:'bold',
+        textAlign:"center",
+        paddingBottom:15,
+        paddingTop:15
+    },
+    input:{
+        width:200,
+        height:40,
+        padding:5,
+        textAlign:"center",
+        borderWidth:1,
+    },
+    button:{
+        width:100,
+        height:40,
+        backgroundColor:"#21610B",
+        marginTop:20,
+        textAlign:"center",
+        justifyContent:"center",
+        borderWidth:1,
+        borderColor:"#000000"
+    },
+    textButton:{
+        fontSize:15,
+        fontWeight:"bold",
+        textAlign:"center",
+        color:"#FFFFFF"
+    }
+})
 
 export default Login;

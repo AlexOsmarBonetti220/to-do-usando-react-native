@@ -14,7 +14,7 @@ import AdicionarTarefa from "../components/screens/adicionarTarefa";
 
 const myStack = () => {
     return(
-        <Stack.Navigator initialRouteName="Await">
+        <Stack.Navigator initialRouteName="Await" screenOptions={{headerShown:false}}>
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Cadastro" component={Cadastro} />
             <Stack.Screen name='Login' component={Login} />
