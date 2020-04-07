@@ -45,10 +45,17 @@ const Cadastro = ({navigation}) => {
                 <Text style={e.dica}>Digite sua senha</Text>
                 <TextInput style={[e.input, {borderColor:"#FF0000"}]} placeholder="Senha" onChangeText={(t)=>setPassword(t)} secureTextEntry={true} />
             </View>
-            <View>
+            <View style={{flexDirection:"row"}}>
                 <TouchableOpacity onPress={cadastrar}>
                     <View style={e.button}>
                         <Text style={e.textButton}>Cadastrar</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate("Home");
+                }}>
+                    <View style={[e.button, {backgroundColor:"#ffff00"}]}>
+                        <Text style={[e.textButton, {color:"#000000"}]}>Voltar</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -90,7 +97,8 @@ const e = StyleSheet.create({
         textAlign:"center",
         justifyContent:"center",
         borderWidth:1,
-        borderColor:"#000000"
+        borderColor:"#000000",
+        marginRight:10
     },
     textButton:{
         fontSize:15,
