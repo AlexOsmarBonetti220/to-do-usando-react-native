@@ -11,6 +11,7 @@ import Await from "../components/screens/await";
 import TelaInicial from '../components/screens/telaInicial';
 import MoreInfo from "../components/screens/moreInfo";
 import AdicionarTarefa from "../components/screens/adicionarTarefa";
+import AttTarefa from "../components/screens/attTarefa";
 
 const myStack = () => {
     return(
@@ -22,6 +23,7 @@ const myStack = () => {
             <Stack.Screen name="TelaInicial" component={TelaInicial} />
             <Stack.Screen name="MoreInfo" component={MoreInfo} />
             <Stack.Screen name="AdicionarTarefa" component={AdicionarTarefa} />
+            <Stack.Screen name="AttTarefa" component={AttTarefa} />
         </Stack.Navigator>
     )
 }

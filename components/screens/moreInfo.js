@@ -66,7 +66,14 @@ const moreInfo = ({route, navigation}) => {
                     </View>
                 </TouchableOpacity>
             </View>
-            <View>
+            <View style={{flexDirection:"row"}}>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate("AttTarefa", {id:key})
+                }}>
+                    <View style={[e.buttons, {marginTop:20, backgroundColor:"#0000FF"}]}>
+                        <Text style={e.textButton}>Atualizar tarefa</Text>
+                    </View>
+                </TouchableOpacity>
                 <TouchableOpacity onPress={()=>{
                     navigation.navigate("TelaInicial");
                 }}>
