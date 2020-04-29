@@ -13,7 +13,7 @@ const Page = styled.SafeAreaView`
 const TextAlert = styled.Text`
     font-size:25px;
     text-align:center;
-    font-weight:center;
+    font-weight:bold;
 `;
 
 const Await = ({navigation}) => {
